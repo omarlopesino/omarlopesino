@@ -1,4 +1,23 @@
+# Features
+
+This document details at high level how to solve any feature of the requirements that is not
+explained by the self design.
+
 ## Search
+
+### External
+
+The templates of the content will contain enough metatags to be found.
+
+Before publishing an article, lighthouse tests will be ran on created and updated pages. This
+should reduce drastically any regression. By having a site with good scores, and one of that
+scores is SEO, that will guarantee page can be easily found.
+
+A basic sitemap will be done with: https://docs.astro.build/en/guides/integrations-guide/sitemap/
+
+Finally, in this AI age, a llm.txt file will be added to try guide AI to the content.
+
+### Internal
 
 Will be done with astro-pagefind.
 
@@ -35,7 +54,27 @@ must go to a page with all the values of the facets in a grid. The grid will be 
 - Per year we will group by decade 
 - Per tag we will group first letter, so tags are sorted alphabetically.
 
-It will be done using astro API
+It will be done using astro API and reading its custom metadata.
 
-## Sitemap
-Basic sitemap with: https://docs.astro.build/en/guides/integrations-guide/sitemap/
+These facets implies the existence of these routes:
+
+- /posts/year/2022
+
+
+## Multilingual
+
+Follow instructions from [astro i18n docs](https://docs.astro.build/es/guides/internationalization/)
+
+## Posts
+
+Posts will be done with the usual posts system. The urls will be created based on the markdown frontmatter properties.
+
+After any posts, there will be share links, and an invitation to issue about my own post in github.
+
+## Feed
+
+Follow this recipe
+
+## Engage
+
+TBD

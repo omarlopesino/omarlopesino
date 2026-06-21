@@ -1,46 +1,47 @@
-Search bar
+# Components
 
-Tags selector
+* Search bar
 
-Posts Facets
+* Tags selector
 
-Bubble
+* Posts Facets
 
-Header
+* Bubble
 
-Language selector
+* Header
 
-Footer
+* Language selector
 
-Icon
+* Footer
 
-Profile picture
+* Icon
 
-Accordion
+* Profile picture
 
-Table without borders
+* Accordion
 
-Big Icon + text
+* Table without borders
 
-Post header
+* Big Icon + text
 
-Recommended posts
+* Post header
 
-Card
+* Recommended posts
 
-Navigation menu
+* Card
 
-DAte interval
+* Navigation menu
 
-Button
+* DAte interval
 
-Image
+* Button
 
-Image + Text : possibility to set image side (right or left)
+* Image
 
-Post entry
+* Image + Text : possibility to set image side (right or left)
 
-Post metatags
+* Post entry
 
+* Post metatags
 
-Box (as an accordion alternative)
+* Box (as an accordion alternative)

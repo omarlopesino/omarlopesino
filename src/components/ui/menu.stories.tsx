@@ -32,7 +32,7 @@ export const Megamenu: Story = {
           <MenuLink href="/blog">All posts</MenuLink>
           <MenuLink href="/ia">Ia</MenuLink>
       </Submenu>
-      <MenuLink href="/contact">Contact</MenuLink>
+      <MenuLink href="/contact" className="rounded-lg border border-current">Contact</MenuLink>
     </Menu>
   ),
 };

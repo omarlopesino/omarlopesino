@@ -8,7 +8,8 @@
 
 * Bubble
 
-* Header
+
+* Header -> Done
 
 * Language selector
 
@@ -30,7 +31,7 @@
 
 * Card
 
-* Navigation menu
+* Navigation menu -> Done
 
 * DAte interval
 
@@ -39,6 +40,8 @@
 * Image
 
 * Image + Text : possibility to set image side (right or left)
+
+* Hero: the coolest hero to present myself.
 
 * Post entry
 

@@ -19,7 +19,7 @@ function makeStory(name: string): StoryObj<{ size: number }> {
 }
 
 const meta = {
-  title: 'Icons/Custom Icons',
+  title: 'Components/Icons',
   args: { size: 32 },
   argTypes: {
     size: {

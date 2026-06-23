@@ -2,7 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react';
 import { Menu, MenuLink, Submenu } from './menu';
 
 const meta = {
-  title: 'UI/NavigationMenu',
+  title: 'Components/NavigationMenu',
   component: Menu,
   args: {
     logo: (

@@ -1,5 +1,6 @@
+import React from 'react';
 import type { Preview } from '@storybook/react';
-import { withThemeByClassName } from '@storybook/addon-themes';
+import { withThemeByDataAttribute } from '@storybook/addon-themes';
 import '../src/styles/global.css';
 
 const preview: Preview = {
@@ -13,12 +14,18 @@ const preview: Preview = {
     },
   },
   decorators: [
-    withThemeByClassName({
+    (Story) => (
+      <div className="max-w-5xl mx-auto px-4 max-md:px-0">
+        <Story />
+      </div>
+    ),
+    withThemeByDataAttribute({
       themes: {
-        light: '',
+        light: 'light',
         dark: 'dark',
       },
       defaultTheme: 'light',
+      attributeName: 'data-theme',
     }),
   ],
 };

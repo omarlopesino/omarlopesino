@@ -15,7 +15,7 @@
 
 * Footer
 
-* Icon
+* Icon -> Done
 
 * Profile picture
 
@@ -37,7 +37,7 @@
 
 * Button -> Use native -> Done
 
-* Image
+* Image -> Use astro image -> Done
 
 * Image + Text : possibility to set image side (right or left)
 
@@ -49,4 +49,4 @@
 
 * Box (as an accordion alternative)
 
-* Link, study how to work on the link view respective of its container.
+* Link -> Use native <a> -> Done

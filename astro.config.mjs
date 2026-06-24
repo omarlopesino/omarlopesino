@@ -9,6 +9,7 @@ import icon from 'astro-icon';
 
 // https://astro.build/config
 export default defineConfig({
+  site: process.env.BASE_URL,
   i18n: {
     locales: ["en", "es"],
     defaultLocale: "en"

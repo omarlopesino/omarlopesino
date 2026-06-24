@@ -12,6 +12,12 @@ interface Props {
 
 const { title, description, refresh, lang } = Astro.props;
 
+const locales = ['en', 'es'];
+const defaultLocale = 'en';
+const origin = Astro.site?.origin ?? Astro.url.origin;
+const restPath = Astro.url.pathname.replace(/^\/(en|es)(?=\/|$)/, '') || '/';
+const canonical = `${origin}${Astro.url.pathname}`;
+const alternates = locales.map((code) => ({ code, href: `${origin}/${code}${restPath}` }));
 ---
 
 <html lang={lang}>
@@ -21,6 +27,9 @@ const { title, description, refresh, lang } = Astro.props;
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" href="/favicon.ico" />
     {description && <meta name="description" content={description} />}
+    <link rel="canonical" href={canonical} />
+    {alternates.map(({ code, href }) => <link rel="alternate" hreflang={code} href={href} />)}
+    <link rel="alternate" hreflang="x-default" href={`${origin}/${defaultLocale}${restPath}`} />
     {refresh && <noscript><meta http-equiv="refresh" content={refresh} /></noscript>}
     <title>{title}</title>
   </head>

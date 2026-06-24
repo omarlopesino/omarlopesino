@@ -11,3 +11,9 @@ export function useTranslations(lang: keyof typeof ui) {
     return ui[lang][key] || ui[defaultLang][key];
   }
 }
+
+export function useUrl(lang: keyof typeof ui) {
+  return function url(slug = '') {
+    return `/${lang}/${slug}`;
+  }
+}

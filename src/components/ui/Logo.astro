@@ -1,6 +1,7 @@
 ---
-import { getLangFromUrl } from "@/i18n/utils";
+import { getLangFromUrl, useUrl } from "@/i18n/utils";
 
 const lang = getLangFromUrl(Astro.url);
+const url = useUrl(lang);
 ---
-<a href={"/" + lang + "/"} class="text-xl font-bold text-base-content hover:opacity-80 p-4">Omar Lopesino</a>
+<a href={url()} class="text-xl font-bold text-base-content hover:opacity-80 p-4">Omar Lopesino</a>

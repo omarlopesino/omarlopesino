@@ -9,8 +9,8 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 
 ---
-<Menu>
-  <Logo slot="logo" />
+<Menu class="shadow-sm">
+  <Logo slot="start" />
   <MenuLink href="/blog">{t('nav.blog')}</MenuLink>
   <MenuLink href="/about">{t('nav.about')}</MenuLink>
   <MenuLink href="/contact" class="px-4 rounded-lg border border-current">{t('nav.contact')}</MenuLink>

@@ -1,0 +1,8 @@
+---
+---
+<script is:inline>
+    if (location.pathname === "/") {
+        const lang = navigator.language.startsWith("es") ? "es" : "en";
+        location.replace(`/${lang}/`);
+    }
+</script>

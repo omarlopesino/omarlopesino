@@ -33,6 +33,24 @@ const xDefault = alternates.find((a) => a.lang === defaultLang);
     {xDefault && <link rel="alternate" hreflang="x-default" href={`${origin}${xDefault.path}`} />}
     <meta http-equiv="refresh" content={refresh} />
     <title>{title}</title>
+    <script is:inline>
+      const theme = localStorage.getItem('theme');
+      if (theme != null) {
+        document.documentElement.setAttribute(
+          'data-theme',
+          localStorage.getItem('theme') ?? 'light'
+        );
+      }
+
+      document.addEventListener('DOMContentLoaded', () => {
+        const toggle = document.querySelector('.theme-controller');
+        if (!toggle) return;
+        toggle.checked = (localStorage.getItem('theme') ?? 'light') === 'dark';
+        toggle.addEventListener('change', (e) => {
+          localStorage.setItem('theme', e.target.checked ? 'dark' : 'light');
+        });
+      });
+    </script>
   </head>
   <body class="max-w-5xl mx-auto">
     <header class="lg:px-4">

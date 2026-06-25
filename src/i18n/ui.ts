@@ -11,11 +11,15 @@ export const ui = {
     'nav.about': 'About me',
     'nav.blog': 'Blog',
     'nav.contact': 'Contact',
+    'nav.share': 'Share',
+    'nav.shareTitle': 'Share this post in social networks!'
   },
   es: {
     'nav.home': 'Inicio',
     'nav.about': 'Sobre mi',
     'nav.blog': 'Blog',
     'nav.contact': 'Contactar',
+    'nav.share': 'Compartir',
+    'nav.shareTitle': '¡Comparte esta publicación en redes sociales!'
   },
 } as const;

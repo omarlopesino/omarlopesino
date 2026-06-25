@@ -1,0 +1,73 @@
+---
+import { Icon } from 'astro-icon/components';
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+
+
+interface Props {
+  id?: string;
+  class?: string;
+  title: string;
+  text: string;
+  url: string;
+  [key: string]: unknown;
+}
+
+const { id = 'share', title, text, url, class: className, ...rest } = Astro.props;
+
+const buttonId = `${id}_button`;
+const modalId = `${id}_modal`;
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const iconClass = 'text-base-content w-6 h-6';
+---
+
+<script is:inline define:vars={{ buttonId, modalId }}>
+    {
+        /**
+         * Share tool on mobile/table, links otherwise.
+         */
+        function share(url, title, text, modal) {
+            const data = {
+                url: url,
+                title: title,
+                text: text,
+            };
+            if (window.matchMedia && window.matchMedia('(pointer:coarse)').matches
+                && navigator.canShare && navigator.canShare(data) && navigator.share) {
+                navigator.share(data).catch((err) => {
+                    if (err.name != 'AbortError') {
+                        modal.showModal();
+                    }
+                });
+            }
+            else {
+                modal.showModal();
+            }
+        }
+
+        // Shares the URL on share button click.
+        const share_button = document.getElementById(buttonId);
+        const share_modal = document.getElementById(modalId);
+        share_button.addEventListener('click', function() {
+            share(share_button.dataset.shareUrl, share_button.dataset.shareTitle, share_button.dataset.shareText, share_modal);
+        })
+    }
+
+</script>
+
+<a id={buttonId} aria-label={t('nav.share')} data-share-url={url} data-share-text={text} data-share-title={title} class:list={[className, 'cursor-pointer inline-flex items-center justify-center border rounded-full p-1']} {...rest}><Icon name="mdi:share" /></a>
+<dialog id={modalId} class="modal">
+  <div class="modal-box">
+    <h3 class="text-lg text-center font-bold">{t('nav.shareTitle')}</h3>
+    <div class="flex justify-center p-2 gap-4">
+        <a href={"https://www.facebook.com/sharer/sharer.php?u=" + encodeURIComponent(url)}  target="_blank" rel="noopener noreferrer" aria-label="Facebook"><Icon name="mdi:facebook"  class:list={iconClass} /></a>
+        <a href={"https://x.com/intent/tweet?url=" + encodeURIComponent(url) + '&text=' + encodeURIComponent(title) } target="_blank" rel="noopener noreferrer" aria-label="X"><Icon name="simple-icons:x" class:list={[iconClass]} /></a>
+    </div>
+  </div>
+
+  <form method="dialog" class="modal-backdrop">
+    <button>close</button>
+  </form>
+</dialog>

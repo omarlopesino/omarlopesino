@@ -12,7 +12,7 @@ const langs = ['en', 'es'];
   <ul class="menu dropdown-content bg-base-100 rounded-box z-1 w-24 p-2 shadow-sm">
     {langs.map((code) => (
       <li>
-        <a href={hrefFor(code)} class:list={[code === lang && 'font-bold', 'uppercase justify-center text-center']}>{code}</a>
+        <a href={hrefFor(code)} class:list={[code === lang && 'font-bold', 'link link-hover uppercase justify-center text-center']}>{code}</a>
       </li>
     ))}
   </ul>

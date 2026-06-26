@@ -4,19 +4,36 @@ interface Props {
   class?: string;
   [key: string]: unknown;
   title: string;
-  description: string;
+  actionClass?: string;
+  actions?: boolean;
+  tag?: string;
+  url?: string;
 }
 
-const { class: className, title, description, ...rest } = Astro.props;
+const { class: className, title, url, actionClass, actions = false, tag = 'div', ...rest } = Astro.props;
+
+const CardElement = tag;
+
+let classList = ['card', className];
+
+if (url != null) {
+    classList.push('relative');
+}
 ---
 
-<div class:list={['card shadow-sm w-96', className]} {...rest}>
+<CardElement class:list={classList} {...rest}>
     <slot name="image" />
     <div class="card-body">
-        <h2 class="card-title">{title}</h2>
-        <p>{description}</p>
-        <div class="card-actions justify-end">
-            <slot name="cta"></slot>
-        </div>
+        <h3 class="card-title">
+            {url && <a href={url} class="after:absolute after:inset-0">{title}</a>}
+            {!url && title}
+        </h3>
+        <slot name="content" />
+        {
+            actions &&
+            <div class:list={["card-actions", actionClass]}>
+                <slot name="cta" />
+            </div>
+        }
     </div>
-</div>
+</CardElement>

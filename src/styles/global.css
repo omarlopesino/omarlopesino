@@ -5,3 +5,7 @@
 @theme {
     --font-sans: 'Geist Variable', sans-serif;
 }
+
+.badge {
+    background-image: none;
+}

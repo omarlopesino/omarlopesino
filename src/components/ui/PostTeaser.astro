@@ -1,0 +1,42 @@
+---
+import { Image } from 'astro:assets';
+import Bubble from './Bubble.astro';
+import Card from './Card.astro';
+
+
+interface Props {
+  title: string;
+  description: string;
+  url: string;
+  date: string
+  tags?: string[];
+  class?: string;
+  image: {
+    src: string;
+    alt: string;
+    width: number;
+    height: number;
+  },
+  imageSrc: string;
+  imageAlt: string;
+  [key: string]: unknown;
+}
+
+const { class: className, title, description, url, date, image, tags = [], ...rest } = Astro.props;
+
+---
+
+<Card url={url} tag="article" title={title} url={url} class:list={['shadow-sm', className]} {...rest}>
+    <Image slot="image" src={image.src} alt={image.alt} width={image.width} height={image.height} />
+    <div slot="content" class="flex gap-3 py-2">
+        <time datetime={date} class="text-sm">{date}</time>
+        <div class="flex gap-3">
+            {
+                tags.map((tag) => (
+                    <Bubble class:list={['badge-accent']}>{tag}</Bubble>
+                ))
+            }
+        </div>
+    </div>
+    <p slot="content">{description}</p>
+</Card>

@@ -17,3 +17,19 @@ export function useUrl(lang: keyof typeof ui) {
     return `/${lang}/${slug}`;
   }
 }
+
+export function useFormatDate(lang: keyof typeof ui) {
+  return function formatDate(date: string | Date, options?: Intl.DateTimeFormatOptions) {
+    const d = date instanceof Date ? date : new Date(date);
+    if (Number.isNaN(d.getTime())) {
+      throw new Error(`Invalid date: ${date}`);
+    }
+    return new Intl.DateTimeFormat(lang, {
+      dateStyle: 'long',
+      // The ISO string (YYYY-MM-DD) is parsed as UTC midnight; format in UTC
+      // so the displayed day doesn't shift in negative-offset timezones.
+      timeZone: 'UTC',
+      ...options,
+    }).format(d);
+  };
+}

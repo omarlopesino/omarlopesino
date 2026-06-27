@@ -1,4 +1,3 @@
-import { a } from "storybook-static/_astro/axe-DhOe-1lm";
 import Bubble from "./Bubble.astro";
 
 const defaultSlots = {

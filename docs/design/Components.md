@@ -6,14 +6,13 @@
 
 * Posts Facets
 
-* Bubble
-
+* Bubble -> Done
 
 * Header -> Done
 
-* Language selector
+* Language selector -> Done
 
-* Footer
+* Footer -> Done
 
 * Icon -> Done
 
@@ -21,19 +20,19 @@
 
 * Accordion
 
-* Table without borders
+* Box (as an accordion alternative)
 
-* Big Icon + text
+* Table
 
-* Post header
+* Big Icon + text -> Depends on homepage
 
 * Recommended posts
 
-* Card
+* Card -> Done
 
 * Navigation menu -> Done
 
-* DAte interval
+* Date interval
 
 * Button -> Use native -> Done
 
@@ -43,10 +42,6 @@
 
 * Hero: the coolest hero to present myself.
 
-* Post entry
-
-* Post metatags
-
-* Box (as an accordion alternative)
+* Post entry -> Done
 
 * Link -> Use native <a> -> Done

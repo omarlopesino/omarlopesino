@@ -1,10 +1,8 @@
 # Components
 
-* Search bar
+* Search bar -> Done
 
-* Tags selector
-
-* Posts Facets
+* Tags selector -> Done
 
 * Bubble -> Done
 
@@ -15,6 +13,20 @@
 * Footer -> Done
 
 * Icon -> Done
+
+* Card -> Done
+
+* Navigation menu -> Done
+
+* Button -> Use native -> Done
+
+* Image -> Use astro image -> Done
+
+* Post entry -> Done
+
+* Link -> Use native <a> -> Done
+
+* Posts Facets
 
 * Profile picture
 
@@ -28,20 +40,8 @@
 
 * Recommended posts
 
-* Card -> Done
-
-* Navigation menu -> Done
-
 * Date interval
-
-* Button -> Use native -> Done
-
-* Image -> Use astro image -> Done
 
 * Image + Text : possibility to set image side (right or left)
 
 * Hero: the coolest hero to present myself.
-
-* Post entry -> Done
-
-* Link -> Use native <a> -> Done

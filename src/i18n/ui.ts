@@ -17,6 +17,7 @@ export const ui = {
     'post.shareTitle': 'Share this article in social networks',
     'search.search': 'Search',
     'taxonomy.tags': 'Tags',
+    'search.clear': 'Clear',
   },
   es: {
     'nav.home': 'Inicio',
@@ -29,5 +30,6 @@ export const ui = {
     'post.shareTitle': 'Comparte el artículo en redes sociales',
     'search.search': 'Busca',
     'taxonomy.tags': 'Etiquetas',
+    'search.clear': 'Limpiar',
   },
 } as const;

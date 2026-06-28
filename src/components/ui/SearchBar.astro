@@ -4,10 +4,11 @@ import { Icon } from 'astro-icon/components';
 
 interface Props {
   class?: string;
+  inputName?: string;
   [key: string]: unknown;
 }
 
-const { class: className, ...rest } = Astro.props;
+const { class: className, inputName = "search", ...rest } = Astro.props;
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -17,7 +18,7 @@ const t = useTranslations(lang);
   <Icon name="mdi:search" />
   <input type="search" 
     class:list={[className]} 
-    name="search" 
+    name={inputName}
     placeholder={t('search.search')} 
     {...rest}
   />

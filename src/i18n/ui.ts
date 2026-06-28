@@ -15,6 +15,7 @@ export const ui = {
     'nav.shareTitle': 'Share this post in social networks!',
     'post.tagsLabel': 'Post tags',
     'post.shareTitle': 'Share this article in social networks',
+    'search.search': 'Search',
   },
   es: {
     'nav.home': 'Inicio',
@@ -25,5 +26,6 @@ export const ui = {
     'nav.shareTitle': '¡Comparte esta publicación en redes sociales!',
     'post.tagsLabel': 'Etiquetas del post',
     'post.shareTitle': 'Comparte el artículo en redes sociales',
+    'search.search': 'Busca',
   },
 } as const;

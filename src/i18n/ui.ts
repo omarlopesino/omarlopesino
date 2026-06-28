@@ -16,6 +16,7 @@ export const ui = {
     'post.tagsLabel': 'Post tags',
     'post.shareTitle': 'Share this article in social networks',
     'search.search': 'Search',
+    'taxonomy.tags': 'Tags',
   },
   es: {
     'nav.home': 'Inicio',
@@ -27,5 +28,6 @@ export const ui = {
     'post.tagsLabel': 'Etiquetas del post',
     'post.shareTitle': 'Comparte el artículo en redes sociales',
     'search.search': 'Busca',
+    'taxonomy.tags': 'Etiquetas',
   },
 } as const;

@@ -1,0 +1,94 @@
+---
+import { getLangFromUrl, useTranslations } from '@/i18n/utils';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  label: string;
+  tags: {
+    key: string,
+    label: string,
+  }[];
+  class?: string;
+  inputName?: string;
+  [key: string]: unknown;
+}
+
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
+
+const { label = t('taxonomy.tags'), tags, class: className, inputName="tags", ...rest } = Astro.props;
+
+const selectedTagsId = inputName + '_selected';
+const datalist_id = inputName + '_list';
+
+// @todo allow removing tags: 1) individually; 2) all.
+// @todo don't show tag keys but labels.
+
+---
+<script is:inline define:vars={{ inputName, tags, selectedTagsId }}>
+  {
+    const tagKeys = tags.map((tag) => tag.key);
+    const input = document.querySelector('input[name=' + inputName + ']');
+    const selectedTags = [];
+    input.addEventListener('keypress', onTagsEnter);
+
+    input.addEventListener('input', (event) => {
+      processNewValue(event.target);
+      event.target.value = '';
+    });
+
+    function onTagsEnter(event) {
+      if (event.keyCode === 13) {
+        event.preventDefault();
+        processNewValue(event.target);
+      }
+    }
+
+    function processNewValue(input) {
+      const value = input.value;
+      if (tagKeys.includes(value) && !selectedTags.includes(value)) {
+        selectedTags.push(value);
+        refreshTags();
+        input.value = '';
+        dispatchNewTagsEvent(input, selectedTags)
+      }
+    }
+
+    function dispatchNewTagsEvent(input, newTags) {
+      const customEvent = new CustomEvent('newTags', {
+        detail: {
+          tags: newTags,
+        }
+      })
+      input.dispatchEvent(customEvent)
+    }
+
+    function refreshTags() {
+      const selectedTagsElement = document.getElementById(selectedTagsId);
+      selectedTagsElement.innerHTML = selectedTags.map(
+        (selectedTag) => '<span class="badge badge-secondary">' + selectedTag + '</span>'
+      ).join('');
+    }
+  }
+</script>
+
+<label class="input">
+  <Icon name="mdi:tag" />
+  <input type="text"  
+    class:list={[className]}
+    name={inputName}
+    placeholder={label}
+    aria-label={label}
+    list={datalist_id}
+    {...rest}
+  />
+  <datalist id={datalist_id}>
+    {
+      tags.map((tag) => (
+        <option value={tag.key} label={tag.label} />
+      ))
+    }
+  </datalist>
+</label>
+<div class="mt-2 flex gap-2" id={selectedTagsId}>
+</div>

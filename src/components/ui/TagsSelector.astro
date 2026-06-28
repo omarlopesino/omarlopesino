@@ -112,7 +112,7 @@ const datalist_id = inputName + '_list';
     function addSelectedTagToHtmlContainer(selectedTag, selectedTagsElement) {
 
           const selectedTagElement = document.createElement('span');
-          selectedTagElement.classList = 'badge badge-secondary cursor-default';
+          selectedTagElement.classList = 'badge badge-secondary text-xs cursor-default';
           selectedTagElement.textContent = tagsDictionary[selectedTag] + ' ';
 
           const removeTagElement = document.createElement('button');
@@ -146,8 +146,8 @@ const datalist_id = inputName + '_list';
   </datalist>
 </label>
 
-<div class="mt-2 flex gap-2">
+<div class="mt-2 flex gap-3">
   <div class="flex gap-2" id={selectedTagsId}>
   </div>
-  <button id={clearId} class="btn btn-xs btn-primary cursor-pointer text-sm hidden">{t('search.clear')}</button>
+  <button id={clearId} class="btn btn-xs btn-primary cursor-pointer text-xs hidden">{t('search.clear')}</button>
 </div>

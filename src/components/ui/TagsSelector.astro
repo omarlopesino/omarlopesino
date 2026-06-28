@@ -19,23 +19,52 @@ const t = useTranslations(lang);
 const { label = t('taxonomy.tags'), tags, class: className, inputName="tags", ...rest } = Astro.props;
 
 const selectedTagsId = inputName + '_selected';
+const clearId = inputName + '_clear';
 const datalist_id = inputName + '_list';
 
 // @todo allow removing tags: 1) individually; 2) all.
 // @todo don't show tag keys but labels.
 
 ---
-<script is:inline define:vars={{ inputName, tags, selectedTagsId }}>
+<script is:inline define:vars={{ inputName, tags, selectedTagsId, clearId}}>
   {
-    const tagKeys = tags.map((tag) => tag.key);
+    let selectedTags = [];
+    const tagsDictionary = buildTagsDictionary(tags);
+
     const input = document.querySelector('input[name=' + inputName + ']');
-    const selectedTags = [];
+
+    const clearButton = document.getElementById(clearId);
+
     input.addEventListener('keypress', onTagsEnter);
 
-    input.addEventListener('input', (event) => {
-      processNewValue(event.target);
-      event.target.value = '';
-    });
+    input.addEventListener('input', (event) => processNewValue(event.target));
+
+    clearButton.addEventListener('click', clearAllTags);
+
+    function onTagRemoveClick(event) {
+      if (event.target.dataset.tagRemove != null && selectedTags.includes(event.target.dataset.tagRemove)) {
+        removeTag(event.target.dataset.tagRemove);
+        refreshTags();
+      }
+    }
+
+    function removeTag(tag) {
+      selectedTags = selectedTags.filter((selectedTag) => selectedTag != tag);
+    }
+
+    function clearAllTags() {
+      selectedTags = [];
+      refreshTags();
+    }
+
+    function buildTagsDictionary(tags) {
+      const tagsDictionary = [];
+      for (let tagIndex in tags) {
+        let currentTag = tags[tagIndex];
+        tagsDictionary[currentTag.key] = currentTag.label;
+      }
+      return tagsDictionary;
+    }
 
     function onTagsEnter(event) {
       if (event.keyCode === 13) {
@@ -46,11 +75,10 @@ const datalist_id = inputName + '_list';
 
     function processNewValue(input) {
       const value = input.value;
-      if (tagKeys.includes(value) && !selectedTags.includes(value)) {
+      if (typeof(tagsDictionary[value]) == 'string' && !selectedTags.includes(value)) {
         selectedTags.push(value);
         refreshTags();
         input.value = '';
-        dispatchNewTagsEvent(input, selectedTags)
       }
     }
 
@@ -65,9 +93,36 @@ const datalist_id = inputName + '_list';
 
     function refreshTags() {
       const selectedTagsElement = document.getElementById(selectedTagsId);
-      selectedTagsElement.innerHTML = selectedTags.map(
-        (selectedTag) => '<span class="badge badge-secondary">' + selectedTag + '</span>'
-      ).join('');
+      selectedTagsElement.innerHTML = '';
+      selectedTags.forEach((selectedTag) => addSelectedTagToHtmlContainer(selectedTag, selectedTagsElement));
+      refreshClearButton(selectedTags);
+      dispatchNewTagsEvent(input, selectedTags)
+    }
+
+    function refreshClearButton(selectedTags) {
+      const hiddenClass = 'hidden';
+      if (selectedTags.length > 0) {
+        clearButton.classList.remove(hiddenClass);
+      }
+      else if(!clearButton.classList.contains(hiddenClass)) {
+        clearButton.classList.add(hiddenClass);
+      }
+    }
+
+    function addSelectedTagToHtmlContainer(selectedTag, selectedTagsElement) {
+
+          const selectedTagElement = document.createElement('span');
+          selectedTagElement.classList = 'badge badge-secondary cursor-default';
+          selectedTagElement.textContent = tagsDictionary[selectedTag] + ' ';
+
+          const removeTagElement = document.createElement('button');
+          removeTagElement.classList = 'bg-transparent cursor-pointer';
+          removeTagElement.setAttribute('data-tag-remove', selectedTag);
+          removeTagElement.textContent = 'x';
+          removeTagElement.addEventListener('click', onTagRemoveClick);
+
+          selectedTagElement.appendChild(removeTagElement);
+          selectedTagsElement.appendChild(selectedTagElement);
     }
   }
 </script>
@@ -90,5 +145,9 @@ const datalist_id = inputName + '_list';
     }
   </datalist>
 </label>
-<div class="mt-2 flex gap-2" id={selectedTagsId}>
+
+<div class="mt-2 flex gap-2">
+  <div class="flex gap-2" id={selectedTagsId}>
+  </div>
+  <button id={clearId} class="btn btn-xs btn-primary cursor-pointer text-sm hidden">{t('search.clear')}</button>
 </div>

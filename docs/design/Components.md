@@ -26,15 +26,13 @@
 
 * Link -> Use native <a> -> Done
 
-* Posts Facets
+* Posts Facets -> Done
 
-* Profile picture
+* Profile picture -> Done
 
-* Accordion
+* Details -> Done
 
-* Box (as an accordion alternative)
-
-* Table
+* Table -> Done
 
 * Big Icon + text -> Depends on homepage
 

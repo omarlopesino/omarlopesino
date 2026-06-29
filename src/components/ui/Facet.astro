@@ -1,0 +1,26 @@
+---
+interface Props {
+  title: string;
+  facets: {
+    title: string;
+    path: string;
+    count?: number;
+  }[],
+  class?: string;
+  [key: string]: unknown;
+}
+
+const { class: className, title, facets, ...rest } = Astro.props;
+
+---
+
+<div class:list={[className, "flex flex-col gap-2"]}>
+    <h3 class="text-md font-bold">{title}</h3>
+    <ul class="list ml-3 list-disc" {...rest}>
+        {
+            facets.map((facet) => (
+                <li><a href={facet.path} title={facet.title}>{facet.title} {facet.count && '(' + facet.count + ')'}</a></li>
+            ))
+        }
+    </ul>
+</div>

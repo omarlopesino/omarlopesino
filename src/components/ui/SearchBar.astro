@@ -14,10 +14,9 @@ const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 
-<label class="input">
+<label class:list={[className, "input"]}>
   <Icon name="mdi:search" />
   <input type="search" 
-    class:list={[className]} 
     name={inputName}
     placeholder={t('search.search')} 
     {...rest}

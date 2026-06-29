@@ -127,10 +127,9 @@ const datalist_id = inputName + '_list';
   }
 </script>
 
-<label class="input">
+<label class:list={[className, "input"]}>
   <Icon name="mdi:tag" />
   <input type="text"  
-    class:list={[className]}
     name={inputName}
     placeholder={label}
     aria-label={label}

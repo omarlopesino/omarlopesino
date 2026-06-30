@@ -7,6 +7,5 @@ interface Props {
 
 const { class: className, category, ...rest } = Astro.props;
 
-const shareId = `share_${crypto.randomUUID()}`;
 ---
 <span class:list={[className, "font-bold text-purple-500 dark:text-base-content"]} {...rest}>{category}</span>

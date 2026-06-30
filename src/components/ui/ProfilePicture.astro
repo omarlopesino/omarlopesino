@@ -1,13 +1,9 @@
 ---
+import type { Image as TypeImage } from '@/types';
 import { Image } from 'astro:assets';
 
 interface Props {
-  image: {
-    alt: string,
-    src: string,
-    width: number,
-    height: number
-  },
+  image: TypeImage,
   class?: string;
   [key: string]: unknown;
 }

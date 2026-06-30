@@ -25,6 +25,7 @@ export default {
   component: Post,
   args:  {
     title: 'My awesome post',
+    category: 'Test',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     tags: [
       { name: 'Tag 1', path: 'blog/tags/tag-1' },

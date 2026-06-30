@@ -3,34 +3,17 @@ import { Image } from 'astro:assets';
 import Bubble from './Bubble.astro';
 import Share from './Share.astro';
 import { getLangFromUrl, useTranslations, useFormatDate, useUrl } from '@/i18n/utils';
-
-type PostTag = {
-  name: string;
-  path: string;
-};
-
-interface Props {
-  title: string;
-  description: string;
-  url: string;
-  date: string
-  tags?: PostTag[];
-  class?: string;
-  image: {
-    src: string;
-    alt: string;
-    width: number;
-    height: number;
-  },
-  [key: string]: unknown;
-}
+import { type PostInterface } from '@/types';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 const formatDate = useFormatDate(lang);
 const localizedUrl = useUrl(lang);
 
-const { class: className, title, description, url, date, image, tags = [], ...rest } = Astro.props;
+interface Props extends PostInterface {
+}
+
+const { class: className, category, title, description, url, date, image, tags = [], ...rest } = Astro.props;
 
 const shareId = `share_${crypto.randomUUID()}`;
 ---
@@ -40,18 +23,19 @@ const shareId = `share_${crypto.randomUUID()}`;
     <Image src={image.src} alt={image.alt} width={image.width} height={image.height} class="mx-auto w-full aspect-[21/9] object-cover mb-2" />
     <div class="flex items-center gap-3 justify-center">
         <time datetime={date} class="text-sm">{formatDate(date)}</time>
-        <ul class="flex gap-3 list-none p-0! m-0!" aria-label={t('post.tagsLabel')}>
-            {
-                tags.map((tag) => (
-                    <li class="m-0 p-0">
-                        <Bubble tag="a" href={localizedUrl(tag.path)} class:list={['badge-accent', 'dark:badge-secondary', 'no-underline']}>{tag.name}</Bubble>
-                    </li>
-                ))
-            }
-        </ul>
+        <span class="font-bold text-purple-500">{category}</span>
     </div>
     <p>{description}</p>
     <slot name="content"></slot>
+    <ul class="flex gap-3 list-none p-0! m-0!" aria-label={t('post.tagsLabel')}>
+        {
+            tags.map((tag) => (
+                <li class="m-0 p-0">
+                    <Bubble tag="a" href={localizedUrl(tag.path)} class:list={['badge-accent', 'dark:badge-secondary', 'no-underline']}>{tag.name}</Bubble>
+                </li>
+            ))
+        }
+    </ul>
     <div class="flex flex-col items-center">
         <h2 class="mt-0! mb-2 text-base font-normal">{t('post.shareTitle')}</h2>
         <Share class="align-middle" id={shareId} url={url} title={title} text={description} />

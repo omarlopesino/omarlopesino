@@ -5,9 +5,19 @@ export default {
   component: PostTeaser,
   args:  {
     class: 'w-70',
+    category: 'Test',
     title: 'My awesome post',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
-    tags: ['Tag 1', 'Tag 2'],
+    tags: [
+      {
+        name: 'Tag 1',
+        key: 'tag1',
+      },
+      {
+        name: 'Tag 2',
+        key: 'tag2',
+      },
+    ],
     date: '2026-06-26',
     image: {
         src: '/placeholder.png',
@@ -15,7 +25,7 @@ export default {
         width: 600,
         height: 400,
     },
-    url: '#'
+    url: '#',
   },
 };
 

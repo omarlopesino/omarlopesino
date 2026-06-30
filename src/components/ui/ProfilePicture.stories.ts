@@ -3,12 +3,7 @@ export default {
   title: 'Components/ProfilePicture',
   component: ProfilePicture,
   args:  {
-    image: {
-        alt: 'Placeholder',
-        src: '/200x200.jpg',
-        width: 200,
-        height: 200,
-    },
+    image: Image,
     class: 'w-24 rounded-full'
   },
 };

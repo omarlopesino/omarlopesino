@@ -1,6 +1,6 @@
 import Card from "./Card.astro";
 
-const image = '<img alt="Placeholder image" src="https://placehold.co/600x400/EEE/31343C" />'
+const image = '<img alt="Placeholder image" src="https://placehold.co/960x540.jpg" />'
 const content = '<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>';
 const actionClass = 'justify-end';
 

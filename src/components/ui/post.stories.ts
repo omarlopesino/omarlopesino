@@ -33,10 +33,10 @@ export default {
     ],
     date: '2026-06-26',
     image: {
-        src: '/placeholder.png',
+        src: '/960x540.jpg',
         alt: 'My awesome image',
-        width: 1024,
-        height: 439,
+        width: 960,
+        height: 520,
     },
     url: '#',
     slots: {

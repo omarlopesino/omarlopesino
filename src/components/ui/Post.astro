@@ -22,7 +22,7 @@ const shareId = `share_${crypto.randomUUID()}`;
 
 <article class:list={['prose', className]} {...rest}>
     <h1 class="m-0 text-center">{title}</h1>
-    <Image src={image.src} alt={image.alt} width={image.width} height={image.height} class="mx-auto w-full aspect-[21/9] object-cover mb-2" />
+    <Image src={image.src} alt={image.alt} width={image.width} height={image.height} class="mx-auto w-full aspect-[16/9] object-cover mb-2" />
     <div class="flex items-center gap-3 justify-center">
         <Date date={date} />
         <PostCategory category={category} />

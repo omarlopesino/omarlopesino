@@ -14,7 +14,7 @@ const localizedUrl = useUrl(lang);
 interface Props extends PostInterface {
 }
 
-const { class: className, category, title, description, url, publishedDate, image, tags = [], ...rest } = Astro.props;
+const { class: className, category, title, description, url, pubDate, image, tags = [], ...rest } = Astro.props;
 
 const shareId = `share_${crypto.randomUUID()}`;
 ---
@@ -23,7 +23,7 @@ const shareId = `share_${crypto.randomUUID()}`;
     <h1 class="m-0 text-center">{title}</h1>
     <Image src={image.src} alt={image.alt} width={image.width} height={image.height} class="mx-auto w-full aspect-[16/9] object-cover mb-2" />
     <div class="flex items-center gap-3 justify-center">
-        <Date publishedDate={publishedDate} />
+        <Date pubDate={pubDate} />
         <PostCategory category={category} />
     </div>
     <p>{description}</p>

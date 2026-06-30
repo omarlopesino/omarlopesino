@@ -31,7 +31,7 @@ export default {
       { name: 'Tag 1', path: 'blog/tags/tag-1' },
       { name: 'Tag 2', path: 'blog/tags/tag-2' },
     ],
-    publishedDate: '2026-06-26',
+    pubDate: '2026-06-26',
     image: {
         src: '/960x540.jpg',
         alt: 'My awesome image',

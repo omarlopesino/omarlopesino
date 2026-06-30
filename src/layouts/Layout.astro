@@ -31,9 +31,10 @@ const xDefault = alternates.find((a) => a.lang === defaultLang);
     <link rel="icon" href="/favicon.ico" />
     {description && <meta name="description" content={description} />}
     {!refresh && <link rel="canonical" href={canonical} />}
+    {refresh && <meta http-equiv="refresh" content={refresh} />}
     {alternates.map(({ lang: code, path }) => <link rel="alternate" hreflang={code} href={`${origin}${path}`} />)}
     {xDefault && <link rel="alternate" hreflang="x-default" href={`${origin}${xDefault.path}`} />}
-    {refresh && <meta http-equiv="refresh" content={refresh} />}
+    <slot name="metatags" />
     <title>{title}</title>
     <script is:inline>
       const theme = localStorage.getItem('theme');

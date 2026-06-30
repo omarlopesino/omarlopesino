@@ -42,4 +42,6 @@
 
 * Big Icon + text (Card) -> Done
 
-* Hero: the coolest hero to present myself. Depends on homepage
+* Web Intro (introduction about myself -> Done
+
+* Hero -> Done (using horizontal card)

@@ -19,7 +19,11 @@ Finally, in this AI age, a llm.txt file will be added to try guide AI to the con
 
 ### Internal
 
-Will be done with astro-pagefind.
+Show linkable tags and categories in post detail. Provide pages to lsit tags and categories.
+For category and tag detail, show the related posts ordered descendently.
+
+#### Future steps
+Use astro-pagefind.
 
 With the data-pagefind-filter tags we will index content and tags.
 

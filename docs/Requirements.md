@@ -31,9 +31,12 @@ It is pending to decide to show first the about me or the blog entries. A small 
 Since the first moment the site must be ready to be found externally. The idea is that people should be able to find the page by google / LLM searchs .
 
 Basically, a SEO strategy. URL structure, content,  metatags sed, sitemap, robots and llms txt must be creating according to this objective.
+
 ### Internal
 
-When the number of posts evolve ina  blog we need some tools to let users find specific content, so the site should allow minimal search:
+After developing, It has been noted that being able to explore by categories and tags may be enough for a personal blog. So, initially, the search will be allowed by browsing categories and tags.
+ 
+And, if we see it necessary in a future, we may provide need some tools to let users find specific content, so the site should allow minimal search:
 - By body content.
 - By tags
 

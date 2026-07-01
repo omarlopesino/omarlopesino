@@ -6,9 +6,11 @@ export type Image = {
     height: number;
 }
 
-type PostTag = {
+export type Term = {
   name: string;
   path: string;
+  language: string;
+  id: string;
 };
 
 type Post = {
@@ -16,8 +18,8 @@ type Post = {
     description: string;
     url: string;
     pubDate: string;
-    category: string;
-    tags?: PostTag[];
+    category: Term;
+    tags?: Term[];
     image: Image,
     class?: string;
     [key: string]: unknown;

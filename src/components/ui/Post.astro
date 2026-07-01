@@ -2,7 +2,7 @@
 import { Image } from 'astro:assets';
 import Bubble from './Bubble.astro';
 import Share from './Share.astro';
-import { getLangFromUrl, useTranslations, useFormatDate, useUrl } from '@/i18n/utils';
+import { getLangFromUrl, useTranslations, useUrl } from '@/i18n/utils';
 import { type PostInterface } from '@/types';
 import PostCategory from './PostCategory.astro';
 import Date from './Date.astro';
@@ -24,7 +24,7 @@ const shareId = `share_${crypto.randomUUID()}`;
     <Image src={image.src} alt={image.alt} width={image.width} height={image.height} class="mx-auto w-full aspect-[16/9] object-cover mb-2" />
     <div class="flex items-center gap-3 justify-center">
         <Date date={pubDate} />
-        <PostCategory category={category} />
+        <PostCategory {...category} />
     </div>
     <p>{description}</p>
     <slot name="content"></slot>
@@ -32,7 +32,7 @@ const shareId = `share_${crypto.randomUUID()}`;
         {
             tags.map((tag) => (
                 <li class="m-0 p-0">
-                    <Bubble tag="a" href={localizedUrl(tag.path)} class:list={['badge-accent', 'dark:badge-secondary', 'no-underline']}>{tag.name}</Bubble>
+                    <Bubble tag="a" href={localizedUrl('/tags/' + tag.id)} class:list={['badge-accent', 'dark:badge-secondary', 'no-underline']}>{tag.name}</Bubble>
                 </li>
             ))
         }

@@ -5,17 +5,26 @@ export default {
   component: PostTeaser,
   args:  {
     class: 'w-70',
-    category: 'Test',
+    category: {
+      name: 'Test',
+      id: 'test',
+      path: 'test',
+      language: 'es',
+    },
     title: 'My awesome post',
     description: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
     tags: [
       {
         name: 'Tag 1',
-        key: 'tag1',
+        id: 'tag1',
+        path: 'tag1',
+        language: 'es',
       },
       {
         name: 'Tag 2',
-        key: 'tag2',
+        id: 'tag2',
+        path: 'tag2',
+        language: 'es',
       },
     ],
     pubDate: '2026-06-26',

@@ -18,6 +18,8 @@ export const ui = {
     'search.search': 'Search',
     'taxonomy.tags': 'Tags',
     'search.clear': 'Clear',
+    'tags.path': 'tags',
+    'categories.path': 'categories',
   },
   es: {
     'nav.home': 'Inicio',
@@ -31,5 +33,7 @@ export const ui = {
     'search.search': 'Busca',
     'taxonomy.tags': 'Etiquetas',
     'search.clear': 'Limpiar',
+    'tags.path': 'etiquetas',
+    'categories.path': 'categorías',
   },
 } as const;
